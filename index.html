@@ -7,19 +7,33 @@
 	<script type="text/javascript" src="js/xml2json.js"></script>
 
 	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
-	<script type="text/javascript" src="js/tv-premieres-app/app.js"></script>
-	<script type="text/javascript" src="js/tv-premieres-app/controllers/youtubeController.js"></script>
+	<script type="text/javascript" src="js/music-share-app/app.js"></script>
+	<script type="text/javascript" src="js/music-share-app/controllers/musicshareController.js"></script>
 </head>
-<body>
-	<div class="container" ng-app="TVPremieresApp" ng-controller="youtubeController" ng-init="init()">
-        <div ng-repeat="youtubePlaylist in youtubePlaylists">
-           <h2>{{ youtubePlaylist.title }}</h2>
-            <ul>
-                <li ng-repeat="video in youtubePlaylist.videos">
-                    {{ video }}
-                </li>
-            </ul>
-        </div>
+<body ng-app="MusicShareApp">
+	<div ng-controller="musicshareController" ng-init="init()">
+        <h1>Youtube</h1>
+        <ul ng-repeat="youtubePlaylist in youtubePlaylists">
+           <li>{{ youtubePlaylist.title }}
+                <ul>
+                    <li ng-repeat="video in youtubePlaylist.videos">
+                        {{ video }}
+                    </li>
+                </ul>
+           </li>
+        </ul>
+        <h1>Soundcloud</h1>
+        <ul>
+            <li ng-repeat="value in resultPlaylistsAndTracks">
+                {{value.title}}
+                <ul>
+                    <li ng-repeat="value in value.tracks">
+                        <span>{{value.title}}</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </div>
+
 </body>
 </html>
