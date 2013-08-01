@@ -59,29 +59,6 @@ app.controller("musicshareController", function($scope, $http){
       });
 
 
-      // *********************   BUTTONS
-      $scope.searchtracks = [];
-      $scope.search = function(playlists) {
-        console.log(playlists);
-
-        angular.forEach(playlists, function(value, index) {
-          console.log(playlists);
-          console.log(value);
-
-          $scope.searchtracks.push({
-            title: playlistTitle,
-            videos: videoTitles
-          });
-        })
-
-        $params = $.param({
-          "name": bookData.name,
-          "price": bookData.price,
-          "author_id": bookData.authorId
-        })
-        //sharedBooks.saveBooks($params);
-      };
-
       // DEEZER.
       // https://api.deezer.com/2.0/user/5027124/playlists
 //      $http({method: 'POST', url: "https://api.deezer.com/2.0/user/5027124/playlists", data: {title : "Test de nouvelle playlist"}}).
@@ -111,8 +88,26 @@ app.controller("musicshareController", function($scope, $http){
 
 app.controller('SubmitController', function($scope) {
   $scope.search = function(playlist) {
-    console.log(playlist);
+    //console.log(playlist);
 
+    angular.forEach(playlist.tracks, function(value, index) {
 
+      // Get full title name from playlist.
+      console.log(value.title);
+
+      // Start searching into youtube api search.
+
+      /*$scope.searchtracks.push({
+        title: playlistTitle,
+        videos: videoTitles
+      });*/
+    })
+
+    /*$params = $.param({
+      "name": bookData.name,
+      "price": bookData.price,
+      "author_id": bookData.authorId
+    })*/
+    //sharedBooks.saveBooks($params);
   };
 });
