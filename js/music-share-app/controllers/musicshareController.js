@@ -48,6 +48,7 @@ app.controller("musicshareController", function($scope, $http){
         });
 
 
+
       // *********************   CONVERT FROM YOUTUBE TO SOUNDCLOUD.
       SC.initialize({
         client_id: 'be88ad87cb242d2e88d6573c08278cb2'
@@ -60,14 +61,12 @@ app.controller("musicshareController", function($scope, $http){
 
 
 
+
       // *********************   BUTTONS
       $scope.searchtracks = [];
       $scope.search = function(playlists) {
-        console.log(playlists);
 
         angular.forEach(playlists, function(value, index) {
-          console.log(playlists);
-          console.log(value);
 
           $scope.searchtracks.push({
             title: playlistTitle,
@@ -90,6 +89,7 @@ app.controller("musicshareController", function($scope, $http){
 
 app.controller('SubmitController', function($scope, $http) {
   $scope.search = function(playlist) {
+
     //console.log(playlist);
 
     angular.forEach(playlist.tracks, function(value, index) {
@@ -123,6 +123,25 @@ app.controller('SubmitController', function($scope, $http) {
       "author_id": bookData.authorId
     })*/
     //sharedBooks.saveBooks($params);
+
+
+    console.log(playlist);
+  };
+  $scope.searchYoutubeToSoundcloud = function(playlist) {
+    var title = playlist.title;
+    var videos = playlist.videos;
+    console.log(title);
+    // *********************   CONVERT FROM YOUTUBE TO SOUNDCLOUD.
+    SC.initialize({
+      client_id: 'be88ad87cb242d2e88d6573c08278cb2'
+    });
+
+    angular.forEach(videos, function(video, key){
+      // find all tracks with the genre 'punk' that have a tempo greater than 120 bpm.
+      SC.get('/tracks', { q: video}, function(tracks) {
+        console.log(tracks[0].id);
+      });
+    });
 
 
     /*$params = $.param({

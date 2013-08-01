@@ -15,9 +15,14 @@
 </head>
 <body ng-app="MusicShareApp">
 	<div ng-controller="musicshareController" ng-init="init()">
-        <!--<h1>Youtube</h1>
+        <h1>Youtube</h1>
         <ul ng-repeat="youtubePlaylist in youtubePlaylists">
            <li>{{ youtubePlaylist.title }}
+               <li>
+                    <form ng-controller="SubmitController" ng-submit="searchYoutubeToSoundcloud(youtubePlaylist)" showhide>
+                        <button type="submit">Copy to Youtube</button>
+                    </form>
+               </li>
                 <ul>
                     <li ng-repeat="video in youtubePlaylist.videos">
                         {{ video }}
@@ -25,14 +30,9 @@
                 </ul>
            </li>
         </ul>
-<<<<<<< HEAD
-<<<<<<< HEAD
-        -->
-=======
->>>>>>> Add button functionnality.
-=======
-        -->
->>>>>>> Get title from soundcloud playlists.
+
+
+
 
         <h1>Soundcloud</h1>
         <div >
