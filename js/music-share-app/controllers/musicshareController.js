@@ -23,7 +23,6 @@ app.controller("musicshareController", function($scope, $http){
                   videoTitles.push(video.title);
                 });
                 $scope.youtubePlaylists.push({title: playlistTitle, videos: videoTitles});
-                console.log($scope.youtubePlaylists);
               }).
               error(function(data, status, headers, config) {
                 alert('Error when doing a request to Youtube to get playlist videos ');
@@ -48,6 +47,7 @@ app.controller("musicshareController", function($scope, $http){
           alert('Error when doing a request to Soundcloud to get playlists ');
         });
 
+
       // *********************   CONVERT FROM YOUTUBE TO SOUNDCLOUD.
       SC.initialize({
         client_id: 'be88ad87cb242d2e88d6573c08278cb2'
@@ -57,6 +57,62 @@ app.controller("musicshareController", function($scope, $http){
       SC.get('/tracks', { q: 'Ne-yo Because Of You'}, function(tracks) {
         console.log(tracks);
       });
+
+
+      // *********************   BUTTONS
+      $scope.searchtracks = [];
+      $scope.search = function(playlists) {
+        console.log(playlists);
+
+        angular.forEach(playlists, function(value, index) {
+          console.log(playlists);
+          console.log(value);
+
+          $scope.searchtracks.push({
+            title: playlistTitle,
+            videos: videoTitles
+          });
+        })
+
+        $params = $.param({
+          "name": bookData.name,
+          "price": bookData.price,
+          "author_id": bookData.authorId
+        })
+        //sharedBooks.saveBooks($params);
+      };
+
+      // DEEZER.
+      // https://api.deezer.com/2.0/user/5027124/playlists
+//      $http({method: 'POST', url: "https://api.deezer.com/2.0/user/5027124/playlists", data: {title : "Test de nouvelle playlist"}}).
+//        success(function(data, status, headers, config) {
+//          alert("Playlist deezer créée avec succès.");
+//        }).
+//        error(function(data, status, headers, config) {
+//          alert("La playlist deezer n'a pas pu etre créée.");
+//        });
+//      https://connect.deezer.com/oauth/auth.php?app_id=122645&redirect_uri=file://localhost/Users/yohantillier/Documents/Commerceguys/Projects/musicshare/index.html&perms=manage_library
+//      $http({method: 'GET', url: 'https://api.deezer.com/2.0/user/5027124/playlists'}).
+//        success(function(data, status, headers, config) {
+//          console.log(data);
+//          var x2js = new X2JS();
+//          var json = x2js.xml_str2json(data);
+//          console.log(json);
+//        }).
+//        error(function(data, status, headers, config) {
+//          console.log(data);
+//          alert('error in deezer request');
+//          // called asynchronously if an error occurs
+//          // or server returns response with an error status.
+//        });
     };
 });
 
+
+app.controller('SubmitController', function($scope) {
+  $scope.search = function(playlist) {
+    console.log(playlist);
+
+
+  };
+});

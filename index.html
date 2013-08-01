@@ -25,18 +25,25 @@
                 </ul>
            </li>
         </ul>
-        <h1>Soundcloud</h1>
-        <ul>
-            <li ng-repeat="value in resultPlaylistsAndTracks">
-                {{value.title}}
-                <ul>
-                    <li ng-repeat="value in value.tracks">
-                        <span>{{value.title}}</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
 
+        <h1>Soundcloud</h1>
+        <div >
+            <ul>
+                <li ng-repeat="value in resultPlaylistsAndTracks">
+                    {{value.title}}
+                    <form ng-controller="SubmitController" ng-submit="search(value)" showhide>
+                        <button type="submit">Copy to Youtube</button>
+                    </form>
+                    <ul showhide>
+                        <li ng-repeat="value in value.tracks">
+                            <span>{{value.title}}</span>
+                            <!--<span showhide>coucou</span>-->
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <br /><br /><br /><br />
 </body>
 </html>
