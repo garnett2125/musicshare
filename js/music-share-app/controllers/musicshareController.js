@@ -59,6 +59,7 @@ app.controller("musicshareController", function($scope, $http){
       });
 
 
+
       // *********************   BUTTONS
       $scope.searchtracks = [];
       $scope.search = function(playlists) {
@@ -81,6 +82,7 @@ app.controller("musicshareController", function($scope, $http){
         })
         //sharedBooks.saveBooks($params);
       };
+
     };
 });
 
@@ -122,5 +124,12 @@ app.controller('SubmitController', function($scope, $http) {
     })*/
     //sharedBooks.saveBooks($params);
 
+
+    /*$params = $.param({
+      "name": bookData.name,
+      "price": bookData.price,
+      "author_id": bookData.authorId
+    })*/
+    //sharedBooks.saveBooks($params);
   };
 });
