@@ -55,7 +55,7 @@ app.controller("musicshareController", function($scope, $http){
 
       // find all tracks with the genre 'punk' that have a tempo greater than 120 bpm.
       SC.get('/tracks', { q: 'Ne-yo Because Of You'}, function(tracks) {
-        console.log(tracks);
+        //console.log(tracks);
       });
 
 
@@ -86,14 +86,26 @@ app.controller("musicshareController", function($scope, $http){
 });
 
 
-app.controller('SubmitController', function($scope) {
+app.controller('SubmitController', function($scope, $http) {
   $scope.search = function(playlist) {
     //console.log(playlist);
 
     angular.forEach(playlist.tracks, function(value, index) {
 
       // Get full title name from playlist.
-      console.log(value.title);
+
+      var yt_url='http://gdata.youtube.com/feeds/api/videos?q='+value.title+'&format=5&max-results=1&v=2&alt=jsonc';
+      $http({method: 'GET', url: yt_url, dataType:"jsonp", }).
+        success(function(data, status, headers, config) {
+
+          console.log(data.data.items[0]);
+          console.log(data.data.items[0].title);
+        }).
+        error(function(data, status, headers, config) {
+          alert('Error when doing a request to Youtube to get playlist track');
+        });
+
+
 
       // Start searching into youtube api search.
 
