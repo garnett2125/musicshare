@@ -2,16 +2,20 @@
 <html>
 <head>
 	<title>Share your music & playlist</title>
-	<!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+
+
+
+
+    <!-- INCLUDE REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
 	<script type="text/javascript" src="js/angular.min.js"></script>
 	<script type="text/javascript" src="js/xml2json.js"></script>
-
+    <!--Soundcloud requirement-->
+    <script src="http://connect.soundcloud.com/sdk.js"></script>
 	<!-- INCLUDE APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
 	<script type="text/javascript" src="js/music-share-app/app.js"></script>
 	<script type="text/javascript" src="js/music-share-app/controllers/musicshareController.js"></script>
 
-    <!--Soundcloud requirement-->
-    <script src="http://connect.soundcloud.com/sdk.js"></script>
+
 </head>
 <body ng-app="MusicShareApp">
 	<div ng-controller="musicshareController" ng-init="init()">
@@ -20,7 +24,7 @@
            <li>{{ youtubePlaylist.title }}
                <li>
                     <form ng-controller="SubmitController" ng-submit="searchYoutubeToSoundcloud(youtubePlaylist)" showhide>
-                        <button type="submit">Copy to Youtube</button>
+                        <button type="submit">Copy to Soundcloud</button>
                     </form>
                </li>
                 <ul>
